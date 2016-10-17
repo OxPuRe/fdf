@@ -5,25 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 22:21:09 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:17:43 by auverneu         ###   ########.fr       */
+/*   Created: 2015/11/27 17:49:01 by auverneu          #+#    #+#             */
+/*   Updated: 2016/09/12 20:01:01 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** man 3 strdup
-*/
-
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-	char	*s2;
-	size_t	len;
+	char	*str;
 
-	len = ft_strlen(s1);
-	s2 = (char *)malloc(sizeof(char) * (len + 1));
-	if (s2)
-		ft_strcpy(s2, s1);
-	return (s2);
+	str = NULL;
+	str = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	if (str)
+		ft_strcpy(str, s1);
+	return (str);
 }

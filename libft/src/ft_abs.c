@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/28 21:15:30 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/28 21:22:27 by auverneu         ###   ########.fr       */
+/*   Created: 2016/09/29 18:42:40 by auverneu          #+#    #+#             */
+/*   Updated: 2016/09/29 18:43:05 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-unsigned int	ft_abs(int n)
+unsigned int	ft_abs(int nb)
 {
-	return ((n > 0) ? (unsigned int)n : (unsigned int)-n);
+	return ((nb < 0) ? (unsigned int)-nb : (unsigned int)nb);
 }

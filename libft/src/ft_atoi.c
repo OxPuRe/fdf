@@ -5,37 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 00:08:24 by auverneu          #+#    #+#             */
-/*   Updated: 2016/10/10 11:09:56 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/03 15:54:53 by auverneu          #+#    #+#             */
+/*   Updated: 2016/09/12 19:57:16 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** man 3 atoi
-*/
-
-int		ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
-	int	ret;
-	int	neg;
+	int nb;
+	int	i;
+	int	sign;
 
-	ret = 0;
-	neg = 0;
-	while (ft_isspace(*str))
-		str++;
-	while (*str == '+' || *str == '-')
+	nb = 0;
+	i = 0;
+	sign = 1;
+	while (str[i] == '\n' || str[i] == ' ' || str[i] == '\r' ||
+			str[i] == '\f' || str[i] == '\v' || str[i] == '\t')
+		i++;
+	while (str[i] < '0' && str[i] > '9')
+		i++;
+	if (str[i] == '-')
 	{
-		neg = (*str == '-') ? !neg : 0;
-		str++;
+		sign = -1;
+		i++;
 	}
-	while (ft_isdigit(*str))
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		ret = ret * 10 + (*str - '0');
-		str++;
+		nb = nb * 10 + str[i] - '0';
+		i++;
 	}
-	if (neg)
-		ret = -ret;
-	return (ret);
+	return (nb * sign);
 }

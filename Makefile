@@ -6,7 +6,7 @@
 #    By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 04:38:21 by auverneu          #+#    #+#              #
-#    Updated: 2016/10/14 18:40:42 by auverneu         ###   ########.fr        #
+#    Updated: 2016/10/17 19:48:50 by auverneu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,14 @@ CFLAGS = -Wall -Werror -Wextra
 CPPFLAGS = -I $(INC_PATH) $(addprefix -I ,$(addsuffix /$(INC_PATH),$(LIBS_NAME)))
 CLFLAGS = -lmlx -framework OpenGL -framework AppKit $(addprefix -L ,$(LIBS_NAME)) $(addprefix -,$(subst ib,,$(LIBS_NAME)))
 
-.PHONY: re all printcomp norme clean fclean
+.PHONY: re all norme clean fclean
 
 all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJ)
-	@printf "\e[32;4m[Linking]:\e[0m %s\n" $@
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) -o $(NAME) $(CLFLAGS)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | printcomp $(OBJ_PATH)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	@printf "%s\n" $@
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
@@ -52,17 +51,13 @@ $(LIBS):
 $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
 
-printcomp:
-	@printf "\e[36;4m[Compiling]:\e[0m\n"
-
 clean:
-	@printf "\e[35;4m[Cleaning]:\e[0m\n"
-	@rm -fv $(OBJ)
-	@rm -rf $(OBJ_PATH)
+	@printf "\e[31;4m[Cleaning]:\e[0m %s\n"
+	@rm -f $(OBJ)
+	@rm -rvf $(OBJ_PATH)
 	@$(foreach LIB, $(LIBS_NAME), make -C $(LIB) clean;)
 
 fclean: clean
-	@printf "\e[31;4m[Cleaning]:\e[0m\n"
 	@rm -fv $(NAME)
 	@$(foreach LIB, $(LIBS), rm -fv $(LIB);)
 

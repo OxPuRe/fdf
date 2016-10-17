@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 15:18:56 by auverneu          #+#    #+#             */
-/*   Updated: 2016/05/30 23:38:40 by auverneu         ###   ########.fr       */
+/*   Created: 2015/11/25 12:20:15 by auverneu          #+#    #+#             */
+/*   Updated: 2015/11/25 12:40:08 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** man 3 toupper
-*/
-
-int	ft_toupper(int c)
+int		ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
-		c = c - 32;
-	return (c);
+		return (c - 32);
+	else
+		return (c);
 }

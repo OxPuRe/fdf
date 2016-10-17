@@ -3,30 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 18:35:59 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:14:50 by auverneu         ###   ########.fr       */
+/*   Created: 2015/11/27 15:34:26 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/07 18:02:30 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** man 3 memccpy
-*/
-
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*dest;
+	unsigned char	*srcc;
+	unsigned char	cc;
 
-	i = 0;
-	while (i < n)
+	dest = (unsigned char *)dst;
+	srcc = (unsigned char *)src;
+	cc = c;
+	while (*srcc != cc && n > 0)
 	{
-		*((unsigned char*)dst + i) = *((unsigned char*)src + i);
-		if (*((unsigned char*)src + i) == (unsigned char)c)
-			return (dst + i + 1);
-		i++;
+		*dest = *srcc;
+		dest++;
+		srcc++;
+		n--;
 	}
-	return (NULL);
+	if (*srcc == cc)
+	{
+		*dest = *srcc;
+		dest++;
+		return ((void *)dest);
+	}
+	else
+		return (NULL);
 }

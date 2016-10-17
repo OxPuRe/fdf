@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 14:43:15 by auverneu          #+#    #+#             */
-/*   Updated: 2016/05/30 22:18:02 by auverneu         ###   ########.fr       */
+/*   Created: 2015/11/24 18:36:30 by auverneu          #+#    #+#             */
+/*   Updated: 2015/11/24 18:48:10 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** man 3 isalpha
-*/
-
-int	ft_isalpha(int c)
+int		ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
-	return (0);
+	else
+		return (0);
 }

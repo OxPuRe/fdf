@@ -5,34 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 16:34:58 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:19:13 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/08 23:16:03 by auverneu          #+#    #+#             */
+/*   Updated: 2016/09/02 02:27:31 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** This function allocate a chunk of memory to a string and set all the bytes
-** to 0.
-** Return:	The allocated string.
-**			NULL if there is an error in memory allocation.
-*/
-
-char		*ft_strnew(size_t size)
+char	*ft_strnew(size_t size)
 {
-	char	*ret;
-	size_t	i;
+	char	*s;
 
-	ret = (char *)malloc(sizeof(char) * (size + 1));
-	if (ret)
-	{
-		i = 0;
-		while (i <= size)
-		{
-			*(ret + i) = 0;
-			i++;
-		}
-	}
-	return (ret);
+	s = NULL;
+	s = (char *)malloc(size * sizeof(char) + 1);
+	if (s)
+		ft_memset(s, (int)'\0', size + 1);
+	return (s);
 }

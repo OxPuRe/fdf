@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 14:57:37 by auverneu          #+#    #+#             */
-/*   Updated: 2016/10/07 00:05:05 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/13 22:56:48 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/13 23:06:14 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** This function add an element to the start of the given linked list.
-*/
+#include "libft.h"
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {

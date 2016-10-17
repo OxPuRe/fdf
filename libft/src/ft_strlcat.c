@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 04:57:18 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:18:22 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/12 22:32:12 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/12 22:36:34 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** man 3 strlcat
-*/
-
-size_t		ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	len;
+	size_t	i;
+	size_t	dstmem;
 
-	len = ft_strnlen(dst, size);
-	return (len + ft_strlcpy(dst + len, src, size - len));
+	dstmem = ft_strlen(dst);
+	i = 0;
+	if (size <= dstmem)
+		return (size + ft_strlen(src));
+	while (dstmem + i < (size - 1) && src[i])
+	{
+		dst[i + dstmem] = src[i];
+		i++;
+	}
+	dst[i + dstmem] = '\0';
+	return (dstmem + ft_strlen(src));
 }

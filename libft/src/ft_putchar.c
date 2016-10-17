@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 19:36:31 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 18:50:42 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/03 22:48:23 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/04 18:25:27 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** man 3 putchar
-*/
-
-int		ft_putchar(int c)
+void	ft_putchar(char c)
 {
-	return (write(1, &c, 1) > 0 ? c : -1);
+	write(1, &c, 1);
 }

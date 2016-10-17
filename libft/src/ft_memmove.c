@@ -5,38 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 21:03:43 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:15:23 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/12 22:07:04 by auverneu          #+#    #+#             */
+/*   Updated: 2016/08/25 01:33:53 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** man 3 memmove
-*/
-
-void		*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
+	unsigned char	*dstmem;
 
-	if (src < dst)
-	{
-		while (len)
-		{
-			*((unsigned char *)dst + len - 1) =
-				*((const unsigned char *)src + len - 1);
-			len--;
-		}
-	}
-	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			*((unsigned char *)dst + i) = *((const unsigned char *)src + i);
-			i++;
-		}
-	}
+	dstmem = NULL;
+	dstmem = (void *)malloc(len * sizeof(char));
+	if (!dstmem)
+		return (NULL);
+	ft_memcpy(dstmem, src, len);
+	ft_memcpy(dst, dstmem, len);
+	free(dstmem);
+	dstmem = NULL;
 	return (dst);
 }

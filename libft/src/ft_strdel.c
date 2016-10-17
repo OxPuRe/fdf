@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 16:18:00 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:03:57 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/08 23:29:20 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/08 23:32:00 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** This function free the given string and set it to NULL.
-*/
+#include "libft.h"
 
 void	ft_strdel(char **as)
 {
-	if (!as)
-		return ;
 	free(*as);
 	*as = NULL;
 }

@@ -3,27 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 16:12:54 by auverneu          #+#    #+#             */
-/*   Updated: 2016/10/07 00:04:38 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/14 00:03:48 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/14 16:29:04 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** This function iterate the given function on the given linked list and store
-** the result in a new linked list.
-*/
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*new;
+	t_list	*mem;
 
-	new = (t_list*)malloc(sizeof(t_list));
-	new = (*f)(lst);
-	if (lst->next)
-		new->next = ft_lstmap(lst->next, f);
+	new = ft_lstnew(lst->content, lst->content_size);
+	if (new == NULL)
+		return (NULL);
+	new = f(new);
+	mem = new;
+	lst = lst->next;
+	while (lst)
+	{
+		mem->next = ft_lstnew(lst->content, lst->content_size);
+		if (mem->next == NULL)
+			return (NULL);
+		mem->next = f(mem->next);
+		mem = mem->next;
+		lst = lst->next;
+	}
 	return (new);
 }

@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 20:05:29 by auverneu          #+#    #+#             */
-/*   Updated: 2016/08/13 06:15:33 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/06 02:25:14 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/11 17:07:51 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** This function write the given number to the given file descriptor.
-** Return:	The size of the number
-**			-1 if an error occured
-*/
-
-size_t		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	ret;
+	unsigned int	i;
 
-	ret = 0;
-	if (n == INT_MIN)
-		return (ft_putstr_fd("-2147483648", fd));
+	i = n;
+	if (i > 4294967295)
+	{
+		write(fd, "0", 1);
+	}
 	if (n < 0)
 	{
-		ret = ft_putchar_fd('-', fd) > 0 ? 1 : -1;
-		n = -n;
+		ft_putchar_fd('-', fd);
+		i = -n;
 	}
-	if (n / 10 > 0)
-		ret += ft_putnbr_fd(n / 10, fd);
-	return (ft_putchar_fd(n % 10 + 48, fd) > 0 ? ret + 1 : -1);
+	if (i > 9)
+	{
+		ft_putnbr_fd(i / 10, fd);
+		ft_putnbr_fd(i % 10, fd);
+	}
+	else
+		ft_putchar_fd(i + 48, fd);
 }

@@ -3,46 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 10:26:58 by auverneu          #+#    #+#             */
-/*   Updated: 2016/10/07 00:04:02 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/12 22:38:13 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/13 17:50:37 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** This function create a new element and copy the content in it.
-** If no content or no size is given the function set the content of the
-** element to NULL and the content size to 0.
-** Return:	The new element.
-**			NULL if there is an error in memory allocation.
-*/
-
-t_list		*ft_lstnew(const void *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*ret;
+	t_list	*lst;
 
-	ret = (t_list*)malloc(sizeof(t_list));
-	if (!ret)
-		return (NULL);
-	if (!content || !content_size)
+	if ((lst = (t_list *)ft_memalloc(sizeof(t_list))))
 	{
-		ret->content = NULL;
-		ret->content_size = 0;
-	}
-	else
-	{
-		ret->content = (void *)malloc(content_size);
-		if (!ret->content)
+		if (content)
 		{
-			free(ret);
-			return (NULL);
+			if ((lst->content = ft_memalloc(content_size)))
+			{
+				lst->content = ft_memcpy(lst->content, content, content_size);
+				lst->content_size = content_size;
+			}
+			else
+			{
+				ft_memdel((void **)&lst);
+				return (NULL);
+			}
 		}
-		ft_memcpy(ret->content, (void *)content, content_size);
-		ret->content_size = content_size;
-		ret->next = NULL;
+		else
+		{
+			lst->content = NULL;
+			lst->content_size = 0;
+		}
+		lst->next = NULL;
 	}
-	return (ret);
+	return (lst);
 }

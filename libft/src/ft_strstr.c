@@ -3,36 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 00:32:08 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:20:14 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/07 15:16:45 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/15 21:55:53 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** man 3 strstr
-*/
-
-char		*ft_strstr(const char *s1, const char *s2)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
+	size_t i;
+	size_t j;
 
-	len = ft_strlen(s2);
-	if (len == 0)
-		return ((char*)s1);
 	i = 0;
-	while (*(s1 + i))
+	j = 0;
+	if (ft_strlen(s2) == 0)
+		return ((char *)s1);
+	while (s1[i])
 	{
-		j = 0;
-		while (*(s1 + i + j) == *(s2 + j) && *(s2 + j))
+		while (s1[i + j] == s2[j])
+		{
 			j++;
-		if (j == len)
-			return ((char*)(s1 + i));
+			if (s2[j] == '\0')
+				return ((char *)&s1[i]);
+		}
+		j = 0;
 		i++;
 	}
 	return (NULL);

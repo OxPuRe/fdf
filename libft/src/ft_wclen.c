@@ -5,29 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/19 15:52:25 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/20 17:18:12 by auverneu         ###   ########.fr       */
+/*   Created: 2016/08/23 23:04:23 by auverneu          #+#    #+#             */
+/*   Updated: 2016/08/24 00:09:41 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-/*
-** This function calculate the len of the unicode representation of the given
-** wide char.
-** return:	-the len of the unicode representation.
-** 			- -1 if the wide char is not recognized.
-*/
-
-int		ft_wclen(wchar_t wc)
+size_t		ft_wclen(wchar_t w)
 {
-	if (wc <= 0x10FFFF && wc >= 0x10000)
+	if (w <= 1114111 && w > 65535)
 		return (4);
-	else if (wc < 0x10000 && wc >= 0x800 && (wc > 0xDFFF || wc <= 0xD800))
+	if (w <= 65535 && w > 2042)
 		return (3);
-	else if (wc < 0x800 && wc >= 0x80)
+	if (w <= 2042 && w > 127)
 		return (2);
-	else if (wc < 0x80 && wc >= 0x0)
+	if (w <= 127 && w >= 0)
 		return (1);
-	return (-1);
+	return ((size_t)-1);
 }

@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 14:51:08 by auverneu          #+#    #+#             */
-/*   Updated: 2016/05/30 22:19:10 by auverneu         ###   ########.fr       */
+/*   Created: 2015/11/24 19:02:41 by auverneu          #+#    #+#             */
+/*   Updated: 2015/11/24 19:03:25 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-/*
-** man 3 isdigit
-*/
-
-int	ft_isdigit(int c)
+int		ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

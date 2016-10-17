@@ -3,29 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 23:22:05 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:18:02 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/08 23:45:57 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/09 16:02:24 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** This function iterate the given function on the given string.
-*/
-
-void		ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-	size_t	i;
-
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (*(s + i))
+	while (*s)
 	{
-		(*f)(s + i);
-		i++;
+		f(s);
+		s++;
 	}
 }

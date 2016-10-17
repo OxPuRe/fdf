@@ -3,45 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: auverneu <auverneu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: auverneu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/07 16:57:28 by auverneu          #+#    #+#             */
-/*   Updated: 2016/09/22 20:24:52 by auverneu         ###   ########.fr       */
+/*   Created: 2015/12/09 01:29:55 by auverneu          #+#    #+#             */
+/*   Updated: 2015/12/09 01:43:16 by auverneu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-/*
-** This function concatenate 2 strings
-** Return:	The result of the concatenation
-**			NULL if there is an error in the memory allocation
-*/
-
-char		*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ret;
-	size_t	i;
-	size_t	j;
+	int		i;
+	char	*d;
 
-	if (!s1 || !s2)
+	i = 0;
+	d = NULL;
+	d = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (d == NULL)
 		return (NULL);
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (ret)
+	while (*s1)
 	{
-		i = 0;
-		while (*(s1 + i))
-		{
-			*(ret + i) = *(s1 + i);
-			i++;
-		}
-		j = 0;
-		while (*(s2 + j))
-		{
-			*(ret + i + j) = *(s2 + j);
-			j++;
-		}
-		*(ret + i + j) = 0;
+		*d = *s1;
+		d++;
+		i++;
+		s1++;
 	}
-	return (ret);
+	while (*s2)
+	{
+		*d = *s2;
+		d++;
+		i++;
+		s2++;
+	}
+	*d = '\0';
+	return (d - i);
 }
